@@ -1,0 +1,14 @@
+    <ul>
+        <li ng-repeat="employee in employees" ng-init="parentindex = $index">
+            {{employee.name}}
+            <ul>
+                <li ng-repeat="gender in employee.gender">
+                    {{gender.gender}} - Parent Index {{parentindex}}, Child Index - {{$index}}
+                </li>
+                <li ng-repeat="city in employee.city">
+                    {{city.city}}
+                </li>
+            </ul>
+
+        </li>
+    </ul>

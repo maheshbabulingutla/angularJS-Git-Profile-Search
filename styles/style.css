@@ -1,0 +1,65 @@
+body{
+    font-family: 'Lato', sans-serif;
+    color: #747704;
+    font-weight: 300;
+}
+
+.text-muted{
+    color: #BCBBBB;
+}
+
+.text-thin {
+    font-weight: 100;
+}
+
+.title-super {
+    font-size: 40px;
+}
+
+.title-logo{
+    margin-top: 20px;
+}
+
+hr {
+    border: solid 1px;
+}
+
+div{
+color: black;
+}
+
+table{
+    border:0px solid;
+    border-collapse: collapse;
+}
+
+td{
+    border:0px solid black;
+    align-content: center;
+}
+
+th{
+    border:0px solid black;
+    align-content: center;
+    cursor: pointer;
+}
+
+
+.arrow-down{
+    width:0;
+    height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-bottom: 10px solid black;
+    display:inline-block;
+}
+
+
+.arrow-up{
+    width:0;
+    height:0;
+    border-left:5px solid transparent;
+    border-right:5px solid transparent;
+    border-top: 10px solid black;
+    display:inline-block;
+}
