@@ -1,351 +1,116 @@
 <!DOCTYPE html>
 <html ng-app="myApp">
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>  
     <script src="scripts/script.js" type="text/javascript"></script>
     <script src="scripts/filters.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    </head>
+
     
-    <body ng-controller="mainController"> <!-- modules and controllers -->
+    <body ng-controller="mainController"> 
+        
+        <div class="container">
 
-        <div>
-            <div>
-            <p>First name:
-                {{employee.firstname}}</p> <!-- Binding Expressions -->
-                <p> LastName: {{employee.lastname}} </p>
-                <p> Gender: {{employee.Gender}} </p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                      <h1 class="title-super text-thin">{{message}}</h1>
+                      <h4 class="text-thin">{{createdUser}}</h4>
+                </div>
+
+                <div class="col-md-6 text-right text-uppercase">
+                     <p>
+                         <a target="_blank" href="https://angularjs.org/"><img class="title-logo" ng-src="/Users/maheshbabulingutla/Desktop/AngularJSPractice/images/angularjslogo.jpg" alt="angularJS Logo" height="90px" width="130px"></a>
+                         <span><a target="_blank" href="https://www.w3.org/TR/html5/"><img class="title-logo" ng-src="/Users/maheshbabulingutla/Desktop/AngularJSPractice/images/html5logo.jpg" alt="html5 Logo" height="80px" width="90px"></a></span>
+                         <span><a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Getting_started"> <img class="title-logo" ng-src="/Users/maheshbabulingutla/Desktop/AngularJSPractice/images/css3.jpg" alt="css3 Logo" height="80px" width="90px"></a></span>
+                         <span><a target="_blank" href="http://getbootstrap.com/getting-started/"><img class="title-logo" ng-src="/Users/maheshbabulingutla/Desktop/AngularJSPractice/images/bootstrap.jpg" alt="bootstrap Logo" height="60px" width="90px"></a></span>
+                         </p>
+                </div>
             </div>
-                <div>
-                    <p>TV Show: {{tvshow.name}}</p>
-                    <p>Genre: {{tvshow.genre}}</p>
-                  <img ng-src="{{tvshow.image}}" alt="{{tvshow.name + 'Image'}}" style="height:200px; width:200px" /> <!-- ng-src example -->
-                </div>
-                
-
-                
-                <div> <!-- two way data binding explained using ng-model -->
-                <div>
-<hr>
-<input type="text" ng-model="testngmodel">
-<br />
-<br />
-<p>{{testngmodel}}</p>
-<hr>
-
-                </div>
-
-                    <table align = "center">
-                        <tr>
-                            <td>firstname</td>
-                            <td><input type="text" ng-model="employee.firstname"></td>
-                        </tr>
-                        <tr>
-                            <td>LastName</td>
-                            <td><input type="text" ng-model="employee.lastname"></td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td><input type="text" ng-model="employee.Gender"></td>
-                        </tr>
-                    </table>
-                    <br/>
-                    <table position="relative" border="2px">
-                        <tr>
-                            <td>firstname</td>
-                            <td>{{employee.firstname}}</td>
-                        </tr>
-                        <tr>
-                            <td>LastName</td>
-                            <td>{{employee.lastname}}</td>
-                        </tr>
-                        <tr>
-                            <td>Gender</td>
-                            <td>{{employee.Gender}}</td>
-                        </tr>
-                    </table>
-                    <aside><p>
-                        Explaining two-way data binding using  <strong>"ng-model"</strong>
-                        </p></aside>
-                </div>
-<hr>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                            <th>FirstName</th>
-                            <th>LastName</th>
-                            <th>Gender</th>
-                            <th>Salary</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="employee in employees">
-                                <td>{{employee.firstname}}</td>
-                                 <td>{{employee.lastname}}</td>
-                                  <td>{{employee.gender}}</td>
-                                   <td>{{employee.salary}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-<hr>
-                <div>
-                    <ul>
-                        <li ng-repeat="tvshow in tvshows" ng-init="parentindex = $index"> <!-- finding indexes of parent and child -->
-                            {{tvshow.name}} -Index {{$index}}
-                            <ul>
-                                <li ng-repeat=" name in tvshow.cast">
-                                    {{name.name}} -ParentIndex = {{parentindex}}, Index{{$index}}
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-                                    <aside><p>
-                        Explaining nested loops and indexes using <strong>"ng-repeat"</strong>
-                        </p></aside>
-                <hr>
-
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Technology</th>
-                                <th>Likes</th>
-                                <th>Dislikes</th>
-                                <th>Like/Dislike</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="technology in technologies">
-                                <td>{{technology.name}}</td>
-                                <td>{{technology.likes}}</td>
-                                <td>{{technology.dislikes}}</td>
-                                <td>
-                                    <input type="button" value="Like" ng-click="incrementlikes(technology)">
-                                    <input type="button" value="DisLike" ng-click="incrementdislikes(technology)">
-                                </td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                    <aside><p>
-                        Explaining how to handle events with an example <strong>"ng-click"</strong>
-                        </p></aside>
-                </div>
-                <hr>
-                
-                <div>
-                   Rows to Display: <input type="number" step="1" min="0" max="5" ng-model="rowLimit" />
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>DateOfBirth</th>
-                                <th>Gender</th>
-                                <th>Salary</th>
-                                <th>Salary(Currency Filter)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="employeet in employeesTest | limitTo:rowLimit">
-                                <td>{{employeet.name | uppercase}}</td>
-                                <td>{{employeet.dateofbirth | date:"dd/MM/yyyy"}}</td>
-                                <td>{{employeet.gender | lowercase}}</td>
-                                <td>
-                                    {{employeet.salary | number:2}}
-                                </td>
-                                <td>{{employeet.salary | currency:'$':1}}</td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <aside><p>
-                        Explaining how to handle filters and <b>limitTo</b> to display number of rows with an example <strong>"Filters(UPPERCASE, lowercase, Date, Number, currency)"</strong>
-                        </p></aside>
-                </div>
-                <hr>
-                </div>
-
-                                <div>
-                  Order By: <select ng-model="sortColumn">
-                        <option value="name"> Name ASC</option>
-                        <option value="gender"> Gender ASC</option>
-                        <option value="dateofbirth"> Date of Birth ASC</option>
-                        <option value="-salary"> Salary DESC</option>
-                      </select> 
-                    <table>
-                        <thead>
-                            <tr>
-                                <th ng-click="sortData('name')">
-                                    Name <div ng-class="getSortClass('name')"></div>
-                                    </th>
-                                <th ng-click="sortData('dateofbirth')">Date Of Birth <div ng-class="getSortClass('dateofbirth')"></div></th>
-                                <th ng-click="sortData('gender')">Gender<div ng-class="getSortClass('gender')"></div></th>
-                                <th ng-click="sortData('salary')">Salary<div ng-class="getSortClass('salary')"></div></th>
-                                <th>Salary(Currency Filter)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="employeet in employeesTest | orderBy : sortColumn: reverseSort">
-                                <td>{{employeet.name | uppercase}}</td>
-                                <td>{{employeet.dateofbirth | date:"dd/MM/yyyy"}}</td>
-                                <td>{{employeet.gender | lowercase}}</td>
-                                <td>
-                                    {{employeet.salary | number:2}}
-                                </td>
-                                <td>{{employeet.salary | currency:1}}</td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-
-                    <aside><p>
-                        Explaining sorting data in angularjs
-                        </p></aside>
-                </div>
         </div>
-        <hr>
-        <div>
-            <p>Explaining Search Filter in AngularJS</p>
 
-            Search: <input type="text" placeholder="Search Employees" ng-model="searchText.city" />
-            <br /> <br />
-            
-            <table>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <hr>
+                </div>
+
+
+<div class="row">
+    <div class="col-md-12">
+
+    </div>
+
+    <div class="container">
+
+        <h3>{{error}}</h3>
+
+    </div>
+
+
+    <div class="container">
+        <form ng-submit="search(moviename)">
+            <div class="form-group">
+        <input type="text" placeholder="Git Profile Names" ng-model="moviename" required>
+        <input type="button" value="search" ng-click="search(moviename)" >
+            </div>
+        <br/>
+        <br />
+        <div class="form-group">
+        <input type="text" placeholder="search current repo" ng-model="searchTerm" />
+        </div>
+        </form>
+    </div>
+    <br />
+    <br />
+        
+ <div class="container">
+
+     <div class="media">
+  <div class="media-left media-middle">
+    <a href="#">
+      <img class="media-object" ng-src="{{user.avatar_url}}" alt="{{user.show_title}}" height="150px" width="150px" border="0">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">{{user.name}}</h4>
+    <h5 class="media-heading">{{user.email}}</h5>
+    <h6 class="media-heading">{{user.location}}</h6>
+    <h6 class="media-heading">Created on: {{user.created_at}}</h6>
+    <h6 class="media-heading">Last Updated: {{user.updated_at}}</h6>
+    <h6 class="media-heading">{{user.Bio}}</h6>
+
+  </div>
+
+</div>
+
+<br />
+<br />
+
+          <div class="table-responsive">  
+            <table class="table table-hover">
                 <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
-                    <th>Gender</th>
-                    <th>Salary</th>
-                    <th>City</th>
+                    <tr align="text-center">
+                        <th class="text-muted" ng-click="sortData('name')">Repository Name <div ng-class="getSortClass('name')"></div></th>
+                        <th class="text-muted" ng-click="sortData('stargazers_count')">Repository Stars <div ng-class="getSortClass('stargazers_count')"></div></th>
+                        <th class="text-muted" ng-click="sortData('language')">Repository Language <div ng-class="getSortClass('language')"></div></th>
+                        <th class="text-muted">Clone the Repository</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr ng-repeat="employeete in employeesTest | filter:searchText">
-                        <td>{{employeete.name | uppercase}}</td>
-                        <td>{{employeete.dateofbirth | date:"MM/dd/yyyy"}}</td>
-                        <td>{{employeete.gender | lowercase}}</td>
-                        <td>{{employeete.salary | currency}}</td>
-                        <td>{{employeete.city}}</td>
+                    <tr ng-repeat="repo in repos | orderBy : sortColumn: reverseSort | filter: searchTerm">
+                        <td>{{repo.name}}</td>
+                        <td>{{repo.stargazers_count | number}}</td>
+                        <td>{{repo.language}}</td>
+                        <td><a data-ng-href="{{repo.clone_url}}">{{repo.clone_url}}</a></td>
                     </tr>
                 </tbody>
             </table>
-        </div>
-        <hr>
-        <p>Filter by Multiple Properties</p>
-        
-        <div>
-<input type="text" placeholder="Search Employees" ng-model="searchText.name" />
-<input type="text" placeholder="Search City" ng-model="searchText.city" />
-<input type="checkbox" ng-model="exactMatch" /> Exact Match 
-<br />
-            <br /> <br />
-                <table>
-                <thead>
-                    <tr>
-                    <th>Name</th>
-                    <th>Date of Birth</th>
-                    <th>Gender</th>
-                    <th>Salary</th>
-                    <th>City</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="employeete in employeesTest | filter:searchText|exactMatch">
-                        <td>{{employeete.name | uppercase}}</td>
-                        <td>{{employeete.dateofbirth | date:"MM/dd/yyyy"}}</td>
-                        <td>{{employeete.gender | lowercase}}</td>
-                        <td>{{employeete.salary | currency}}</td>
-                        <td>{{employeete.city}}</td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div>
-        <hr>
-
-                     <div>
-                    <table>
-                        <thead>
-                            <tr>
-                            <th>name</th>
-                            <th>gender</th>
-                            <th>city</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr ng-repeat="gender in genderFilters">
-                                <td>{{gender.name}}</td>
-                                 <td>{{gender.gender | gender}}</td>
-                                  <td>{{gender.city}}</td>
-
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <hr>
-                <br />
-                <br />
-                <p>Explaining about the ng-show and ng-hide</p>
-                        <div>
-                            
-<input type="checkbox" ng-model="showHide" /> Hide City
-<br />
-            <br /> <br />
-                <table>
-                <thead>
-                    <tr>
-                            <th>name</th>
-                            <th>gender</th>
-                            <th ng-hide="showHide">city</th>
-                            <th ng-show="showHide">city</th>
-                            </tr>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr ng-repeat="gender in genderFilters">
-                                <td>{{gender.name}}</td>
-                                 <td>{{gender.gender | gender}}</td>
-                                  <td ng-hide="showHide">{{gender.city}}</td>
-                                  <td ng-show="showHide">#####</td>
-                    </tr>
-                </tbody>
-            </table> 
-        </div>
-
-        <br />
-        <br/>
-        <p>Explaining about ng-init, and how it's used to alias specific Properties of ng-repeat directive</p>
-
-<div>
-    <ul>
-        <li ng-repeat="tvshow in tvshows" ng-init="parentindex = $index">
-            {{tvshow.name}}
-            <ul>
-                <li ng-repeat="cast in tvshow.cast">
-                    {{cast.name}} - Parent Index {{parentindex}}, Child Index - {{$index}}
-                </li>
-            </ul>
-
-        </li>
-    </ul>
-</div>
-<br />
-<br />
-<hr>
-<p> example of how ng-include directive works, which embed an html page into another HTML page</p>
-
-<div>
-    Select Option: <select ng-model="/Users/maheshbabulingutla/Desktop/AngularJSPractice/employee.html">
-        <option value="/Users/maheshbabulingutla/Desktop/AngularJSPractice/employee.html"> Table </option>
-        <option value="employeelist.html"> List </option>
-        </select>
-
-        <div ng-include="'/Users/maheshbabulingutla/Desktop/AngularJSPractice/employee.html'">
-        </div>
-</div>
-
+    
+</div>   
+ </div>
     </body>
 </html>
