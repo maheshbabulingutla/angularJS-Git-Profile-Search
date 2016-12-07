@@ -173,27 +173,51 @@ var genderFilters = [
 
 */
 
+
+
 var myApp = angular.module("myApp",[]);
 
-myApp.controller("mainController", function($scope, $http){
+myApp.controller("mainController", function($scope, github, $interval, $log, $location, $anchorScroll){
 
-var onSuccessUser = function(response){
-  $scope.user = response.data;
-  $http.get($scope.user.repos_url)
-  .then(onRepos, onError)
+var onSuccessUser = function(data){
+  $scope.user = data;
+  github.getRepos($scope.user)
+  .then(onRepos, onError);
 }
 
-var onRepos = function(response){
-  $scope.repos = response.data;
+var onRepos = function(data){
+  $scope.repos = data;
+
 };
 
 var onError = function(reason){
   $scope.error = reason.data;
 }
 
-$scope.search = function(moviename) {
-  $http.get("https://api.github.com/users/" + moviename)
-  .then(onSuccessUser, onerror);
+//count down function for setting the time
+var decrementCountDown = function(){
+  $scope.countdown -= 1;
+  if($scope.countdown < 1){
+    $scope.search($scope.gituser);
+  }
+};
+
+var countDownInterval = null;
+
+var startCountDown = function(){
+ countDownInterval = $interval(decrementCountDown, 1000, $scope.countdown);
+}
+
+// count down function created for search option in git profile Viewer
+
+$scope.search = function(gituser) {
+  $log.info("searching for " + gituser)
+  github.getUser(gituser)
+  .then(onSuccessUser, onError);
+  if(countDownInterval) {
+    $interval.cancel(countDownInterval);
+    $scope.countdown = null;
+  }
 };
 
 $scope.sortColumn = "name";
@@ -202,7 +226,7 @@ $scope.reverseSort = false;
 $scope.sortData = function(column){
   $scope.reverseSort = ($scope.sortColumn == column) ? !$scope.reverseSort : false;
   $scope.sortColumn = column;
-}
+} 
 
 $scope.getSortClass = function(column){
   if($scope.sortColumn == column) {
@@ -211,9 +235,11 @@ $scope.getSortClass = function(column){
   return '';
 }
 
-$scope.moviename = "";
+$scope.gituser = "";
 $scope.message = "GitHub Profile Viewer";
 $scope.createdUser = "Mahesh Lingutla"
 $scope.repoSortOrder = "-stargazers_count";
+$scope.countdown = 5;
+
 
 });
