@@ -50,20 +50,29 @@
 
     </div>
 
+<!-- creating bootstrap form -->
 
-    <div class="container">
-        <form ng-submit="search(moviename)">
-            <div class="form-group">
-        <input type="text" placeholder="Git Profile Names" ng-model="moviename" required>
-        <input type="button" value="search" ng-click="search(moviename)" >
-            </div>
-        <br/>
+<form ng-submit="search(moviename)">
+  <div class="input-group">
+      <span class="input-group-addon" id="basic-addon1">@</span>
+    <!-- <label for="searchprofilename">Search your Git Profile Name</label> -->
+    <input type="text" class="form-control" id="searchprofilename" placeholder="Enter your Git User Name" ng-model="moviename" required>
+  </div>
+
+<br />
+  <div class="container">
+  <button type="submit" class="btn btn-primary btn-lg btn-block" ng-click="search(moviename)">Submit</button>
+  </div>
         <br />
-        <div class="form-group">
-        <input type="text" placeholder="search current repo" ng-model="searchTerm" />
-        </div>
-        </form>
-    </div>
+        <br />
+
+<div class="form-group">
+    <label for="searchcurrentrepo">Search in Current Repository</label>
+    <input type="text" class="form-control" id="searchcurrentrepo" placeholder="Search current repo" ng-model="searchTerm" >
+  </div>
+
+</form>
+
     <br />
     <br />
         
@@ -75,6 +84,7 @@
       <img class="media-object" ng-src="{{user.avatar_url}}" alt="{{user.show_title}}" height="150px" width="150px" border="0">
     </a>
   </div>
+
   <div class="media-body">
     <h4 class="media-heading">{{user.name}}</h4>
     <h5 class="media-heading">{{user.email}}</h5>
@@ -89,6 +99,8 @@
 
 <br />
 <br />
+
+ </div>
 
           <div class="table-responsive">  
             <table class="table table-hover">
@@ -111,6 +123,6 @@
             </table>
     
 </div>   
- </div>
+
     </body>
 </html>

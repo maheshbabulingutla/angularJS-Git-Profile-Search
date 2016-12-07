@@ -211,10 +211,9 @@ $scope.getSortClass = function(column){
   return '';
 }
 
-$scope.moviename = "maheshbabulingutla"
+$scope.moviename = "";
 $scope.message = "GitHub Profile Viewer";
 $scope.createdUser = "Mahesh Lingutla"
-
 $scope.repoSortOrder = "-stargazers_count";
 
 });
